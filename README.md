@@ -5,10 +5,24 @@ L’Oréal is exploring the power of AI, and your job is to showcase what's poss
 ## 🚀 Launch via GitHub Codespaces
 
 1. In the GitHub repo, click the **Code** button and select **Open with Codespaces → New codespace**.
-2. Once your codespace is ready, open the `index.html` file via the live preview.
+2. Once your codespace is ready, open `index.html` with the live preview.
 
-## ☁️ Cloudflare Note
+## ☁️ Connect the Cloudflare Worker
 
-When deploying through Cloudflare, make sure your API request body (in `script.js`) includes a `messages` array and handle the response by extracting `data.choices[0].message.content`.
+The chat sends requests through a Cloudflare Worker. The Worker keeps the OpenAI API key out of the public website.
+
+1. Create a Cloudflare Worker and use the code in `RESOURCE_cloudflare-worker.js`.
+2. In the Worker settings, add an encrypted secret named `OPENAI_API_KEY` and paste your OpenAI key there. **Do not put the key in this repository or in a frontend file.**
+3. Deploy the Worker and copy its `https://...workers.dev/` URL.
+4. In `script.js`, replace `https://YOUR_WORKER_SUBDOMAIN.workers.dev/` in `WORKER_URL` with your deployed URL.
+5. Reload the website and ask a L'Oréal beauty question. The Worker sends the conversation as a `messages` array and returns the assistant's reply.
+
+Until you add the Worker URL, the chat displays a setup message when you submit a question. The Worker adds its own system prompt so it can politely decline unrelated questions.
+
+## ✨ Conversation features
+
+- The chat keeps questions and answers in the current page session so follow-up questions have context.
+- User questions appear above the corresponding assistant responses in distinct chat bubbles.
+- The chat layout adapts to smaller screens.
 
 Enjoy building your L’Oréal beauty assistant! 💄

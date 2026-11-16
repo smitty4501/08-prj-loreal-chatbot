@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat Assistant</title>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Get personalized L'Oréal beauty product and routine recommendations."
     />
+    <title>L'Oréal Beauty Advisor</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
       rel="stylesheet"
@@ -17,45 +17,70 @@
 
   <body>
     <div class="page-wrapper">
-      <!------- Header / Branding ------->
       <header class="site-header">
-        <h1 class="site-title">Smart Product Advisor</h1>
+        <img
+          class="brand-logo"
+          src="img/loreal-logo.png"
+          alt="L'Oréal Paris"
+        />
+        <p class="eyebrow">YOUR PERSONAL BEAUTY ASSISTANT</p>
+        <h1 class="site-title">Discover your beauty routine</h1>
+        <p class="site-intro">
+          Explore L'Oréal makeup, skincare, haircare, and fragrance with
+          personalized recommendations.
+        </p>
       </header>
 
-      <!------- Chat Area ------->
       <main>
-        <section class="chatbox">
-          <div id="chatWindow" class="chat-window">
-            <!-- messages will be appended here via JS -->
+        <section class="chatbox" aria-label="L'Oréal beauty chat">
+          <div
+            id="chatWindow"
+            class="chat-window"
+            role="log"
+            aria-live="polite"
+            aria-relevant="additions"
+            aria-label="Chat conversation"
+          >
+            <div class="message message--assistant">
+              <span class="message-label">L'Oréal Beauty Advisor</span>
+              <p class="message-bubble">
+                Hello! I can help you explore L'Oréal products and build a
+                beauty routine. What would you like to know?
+              </p>
+            </div>
           </div>
 
           <form id="chatForm" class="chat-form">
-            <label for="userInput" class="visually-hidden">Message</label>
+            <label for="userInput" class="visually-hidden">
+              Ask about L'Oréal products or beauty routines
+            </label>
             <input
               id="userInput"
               name="userInput"
               type="text"
-              placeholder="Ask me about products or routines…"
+              placeholder="Ask about products or routines..."
               autocomplete="off"
               required
             />
-            <button type="submit" id="sendBtn">
-              <span class="material-icons">send</span>
-              <span class="visually-hidden">Send</span>
+            <button type="submit" id="sendBtn" aria-label="Send message">
+              Send
             </button>
           </form>
+          <p
+            id="chatStatus"
+            class="chat-status"
+            role="status"
+            aria-live="polite"
+          ></p>
         </section>
       </main>
 
-      <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
-        <nav>
-          <!-- These URLs are placeholders -->
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Contact</a>
-        </nav>
+        <p>Beauty expertise, tailored to you.</p>
+        <p class="footer-note">
+          Recommendations are for informational purposes. Check product
+          packaging for the latest ingredient and usage information.
+        </p>
       </footer>
     </div>
 
